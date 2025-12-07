@@ -6,6 +6,8 @@ class Launchpad {
 
   static void Function(GetIt getItContext)? launchpadInit;
 
+  static LaunchpadServerContext? _serverContext;
+
   static Future<T> launch<T>(
     Session session,
     Future<T> Function(LaunchpadRequestContext context) handleRequest, {
@@ -17,6 +19,24 @@ class Launchpad {
 
     return handleRequest(context);
   }
+
+  static void initServerContext(
+    Serverpod pod,
+    void Function(GetIt getItContext) init,
+  ) {
+    _serverContext ??= LaunchpadServerContext(GetIt.asNewInstance());
+    init(_serverContext!.getIt);
+  }
+}
+
+class LaunchpadServerContext {
+  LaunchpadServerContext(this.getIt);
+
+  final GetIt getIt;
+
+  T get<T extends Object>() {
+    return getIt.get<T>();
+  }
 }
 
 class LaunchpadRequestContext {
@@ -24,6 +44,14 @@ class LaunchpadRequestContext {
 
   final Session session;
   final GetIt _getIt;
+
+  LaunchpadServerContext get serverContext {
+    assert(
+      Launchpad._serverContext != null,
+      'Launchpad server context has not been initialized. Did you forget to call Launchpad.initServerContext in your server\'s main function?',
+    );
+    return Launchpad._serverContext!;
+  }
 
   T get<T extends Object>() {
     return _getIt.get<T>();
