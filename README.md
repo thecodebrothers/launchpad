@@ -59,6 +59,10 @@ class HelloEndpoint extends Endpoint {
     },
   );
 }
+
+class ServerState {
+  int counter = 0;
+}
 ```
 
 Result: you have shared state:
