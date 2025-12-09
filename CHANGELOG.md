@@ -1,3 +1,6 @@
+## 0.1.0
+- Bump serverpod to 3.0.0
+
 ## 0.0.4-rc.4
 - Add missing example part in README
 

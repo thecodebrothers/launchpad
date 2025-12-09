@@ -1,6 +1,6 @@
 name: launchpad
 description: The missing dependency injection library for serverpod
-version: 0.0.4-rc.4
+version: 0.1.0
 repository: https://github.com/thecodebrothers/launchpad
 
 environment:
@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   get_it: ^9.0.5
-  serverpod: ^3.0.0-rc.4
+  serverpod: ^3.0.0
 
 dev_dependencies:
   lints: ^6.0.0
