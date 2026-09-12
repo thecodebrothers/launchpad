@@ -21,8 +21,10 @@ void run(List<String> args) async {
   pod.webServer.addRoute(RootRoute(), '/');
   pod.webServer.addRoute(RootRoute(), '/index.html');
   // Serve all files in the web/static relative directory under /.
+  // Serverpod 4's relic router rejects attaching a route at a tail path
+  // ('/**'), so the catch-all static handler is registered as the fallback.
   final root = Directory(Uri(path: 'web/static').toFilePath());
-  pod.webServer.addRoute(StaticRoute.directory(root), '/**');
+  pod.webServer.fallbackRoute = StaticRoute.directory(root);
 
   Launchpad.initServerContext(pod, (getIt) {
     // Register any global dependencies here.

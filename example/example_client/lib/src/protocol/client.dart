@@ -10,50 +10,51 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import 'dart:async' as _i2;
-import 'protocol.dart' as _i3;
+import 'dart:async' as _ida;
+import 'package:http/http.dart' as _i85jenna;
+import 'package:serverpod_client/serverpod_client.dart' as _isc;
+import 'protocol.dart' as _il2as5qe;
 
 /// {@category Endpoint}
-class EndpointHello extends _i1.EndpointRef {
-  EndpointHello(_i1.EndpointCaller caller) : super(caller);
+class EndpointHello extends _isc.EndpointRef {
+  EndpointHello(_isc.EndpointCaller caller) : super(caller);
 
   @override
   String get name => 'hello';
 
-  _i2.Future<String> hello() => caller.callServerEndpoint<String>(
+  _ida.Future<String> hello() => caller.callServerEndpoint<String>(
     'hello',
     'hello',
     {},
   );
 }
 
-class Client extends _i1.ServerpodClientShared {
+class Client extends _isc.ServerpodClientShared {
   Client(
     String host, {
     dynamic securityContext,
-    _i1.AuthenticationKeyManager? authenticationKeyManager,
     Duration? streamingConnectionTimeout,
     Duration? connectionTimeout,
     Function(
-      _i1.MethodCallContext,
+      _isc.MethodCallContext,
       Object,
       StackTrace,
     )?
     onFailedCall,
-    Function(_i1.MethodCallContext)? onSucceededCall,
+    Function(_isc.MethodCallContext)? onSucceededCall,
     bool? disconnectStreamsOnLostInternetConnection,
+    _i85jenna.Client? httpClientOverride,
   }) : super(
          host,
-         _i3.Protocol(),
+         _il2as5qe.Protocol(),
          securityContext: securityContext,
-         authenticationKeyManager: authenticationKeyManager,
          streamingConnectionTimeout: streamingConnectionTimeout,
          connectionTimeout: connectionTimeout,
          onFailedCall: onFailedCall,
          onSucceededCall: onSucceededCall,
          disconnectStreamsOnLostInternetConnection:
              disconnectStreamsOnLostInternetConnection,
+         httpClientOverride: httpClientOverride,
        ) {
     hello = EndpointHello(this);
   }
@@ -61,8 +62,8 @@ class Client extends _i1.ServerpodClientShared {
   late final EndpointHello hello;
 
   @override
-  Map<String, _i1.EndpointRef> get endpointRefLookup => {'hello': hello};
+  Map<String, _isc.EndpointRef> get endpointRefLookup => {'hello': hello};
 
   @override
-  Map<String, _i1.ModuleEndpointCaller> get moduleLookup => {};
+  Map<String, _isc.ModuleEndpointCaller> get moduleLookup => {};
 }

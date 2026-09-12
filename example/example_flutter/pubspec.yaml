@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '^3.8.0'
+  sdk: '^3.12.2'
   flutter: '^3.32.0'
 
 dependencies:
@@ -29,7 +29,7 @@ dependencies:
     sdk: flutter
   example_client:
     path: ../example_client
-  serverpod_flutter: 3.0.0-rc.4
+  serverpod_flutter: 4.0.0-rc.2
 
 dev_dependencies:
   flutter_lints: '>=3.0.0 <7.0.0'

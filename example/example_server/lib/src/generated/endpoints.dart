@@ -10,33 +10,34 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod/serverpod.dart' as _i1;
-import '../endpoints/hello_endpoint.dart' as _i2;
+import 'package:serverpod/serverpod.dart' as _is;
+import '../endpoints/hello_endpoint.dart' as _ibayjzda;
 
-class Endpoints extends _i1.EndpointDispatch {
+class Endpoints extends _is.EndpointDispatch {
   @override
-  void initializeEndpoints(_i1.Server server) {
-    var endpoints = <String, _i1.Endpoint>{
-      'hello': _i2.HelloEndpoint()
+  void initializeEndpoints(_is.Server server) {
+    var endpoints = <String, _is.Endpoint>{
+      'hello': _ibayjzda.HelloEndpoint()
         ..initialize(
           server,
           'hello',
           null,
         ),
     };
-    connectors['hello'] = _i1.EndpointConnector(
+    connectors['hello'] = _is.EndpointConnector(
       name: 'hello',
       endpoint: endpoints['hello']!,
       methodConnectors: {
-        'hello': _i1.MethodConnector(
+        'hello': _is.MethodConnector(
           name: 'hello',
           params: {},
           call:
               (
-                _i1.Session session,
+                _is.Session session,
                 Map<String, dynamic> params,
-              ) async =>
-                  (endpoints['hello'] as _i2.HelloEndpoint).hello(session),
+              ) async => (endpoints['hello'] as _ibayjzda.HelloEndpoint).hello(
+                session,
+              ),
         ),
       },
     );
