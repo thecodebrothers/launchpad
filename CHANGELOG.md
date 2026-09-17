@@ -1,3 +1,9 @@
+## 0.2.0
+- Bump serverpod to 4.0.0 stable
+- Example bumped to serverpod, serverpod_client, serverpod_flutter and
+  serverpod_test 4.0.0; regenerating with the 4.0.0 CLI produced no changes
+  over 4.0.0-rc.2
+
 ## 0.2.0-rc.2
 - Bump serverpod to 4.0.0-rc.2
 - Raise minimum Dart SDK to 3.12.2 (required by serverpod 4)
